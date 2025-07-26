@@ -13,6 +13,7 @@ export const registerUser = createAsyncThunk(
       
       const response = await axiosClient.post('/user/register', userData);
       // console.log(response.data.user);
+      localStorage.setItem("token", response?.data?.token);
       return response.data.user;
     } catch (error) {
       return rejectWithValue(extractError(error));
